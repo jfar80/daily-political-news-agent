@@ -6,6 +6,8 @@ Está diseñado para ser **genérico y reutilizable**: el motor (código) es el 
 
 > El repositorio publica el motor. El contenido editorial (rol, criterios, fuentes) lo aporta cada usuario en sus archivos privados.
 
+![Vista previa del informe](docs/preview.png)
+
 ---
 
 ## Capacidades
