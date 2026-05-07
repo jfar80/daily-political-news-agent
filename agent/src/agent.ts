@@ -64,7 +64,7 @@ Tu única salida es un ARCHIVO HTML completo y autocontenido (CSS en línea, sin
 7. Diseño profesional: tipografía system-ui, paleta clara con azul accent (#2563eb), buen contraste, responsive.
 8. Todos los enlaces deben ser URLs reales obtenidos en la búsqueda o de los titulares pre-cargados, nunca inventados.
 
-No incluyas markdown, ni bloques de código, ni explicación fuera del HTML. Solo el HTML.`;
+REGLA ABSOLUTA DE SALIDA: tu primer carácter debe ser \`<\` (comienzo de \`<!DOCTYPE html>\`). No saludes, no expliques, no anuncies que vas a generar el informe, no escribas markdown ni bloques de código. Salida = HTML puro y nada más. Si necesitas usar tools, hazlo internamente; el texto que entregues como respuesta final es solo el HTML.`;
 }
 
 function buildUserPrompt(
@@ -122,7 +122,7 @@ export async function generateReport(): Promise<GeneratedReport> {
   const useWebSearch = process.env.ENABLE_WEB_SEARCH !== 'false';
   const response = await client.messages.create({
     model: config.anthropic.model,
-    max_tokens: 10000,
+    max_tokens: 14000,
     system: buildSystemPrompt(memoryCriteria),
     ...(useWebSearch
       ? {
@@ -143,11 +143,14 @@ export async function generateReport(): Promise<GeneratedReport> {
     if (block.type === 'text') raw += block.text;
   }
 
+  const reportsDir = path.join(config.projectRoot, 'reports');
+  await fs.mkdir(reportsDir, { recursive: true });
+  await fs.writeFile(path.join(reportsDir, `_raw_${formatDateIso(now)}.txt`), raw, 'utf-8');
+  console.log(`[agent] Stop reason: ${response.stop_reason}, output tokens: ${response.usage?.output_tokens}`);
+
   const html = extractHtml(raw);
 
   const filename = `informe_${dateIso}.html`;
-  const reportsDir = path.join(config.projectRoot, 'reports');
-  await fs.mkdir(reportsDir, { recursive: true });
   const filepath = path.join(reportsDir, filename);
   await fs.writeFile(filepath, html, 'utf-8');
 
