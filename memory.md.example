@@ -1,0 +1,43 @@
+# memory.md (plantilla)
+
+Este archivo define la **metodología de búsqueda y formato de salida** que el agente inyecta en el prompt al modelo.
+
+Copia este archivo a `memory.md` en la raíz del proyecto y personalízalo.
+
+---
+
+## 1. Selección de contenido
+
+- Cuántas noticias/ítems recolectar por corrida.
+- Filtros temáticos aplicables.
+- Reglas de descarte.
+
+## 2. Fuentes a consultar
+
+### Fuentes primarias
+- [Medio o fuente 1]
+- [Medio o fuente 2]
+- ...
+
+### Fuentes secundarias (de respaldo)
+- [Medio o fuente 1]
+- [Medio o fuente 2]
+
+## 3. Formato por ítem
+
+Cada ítem debe incluir:
+- Título
+- Resumen breve
+- Tema / categoría
+- Por qué importa
+- Fuente con enlace clicable
+
+## 4. Reglas de rigor
+
+- [Regla 1 — ej: dos fuentes mínimas para afirmar un hecho]
+- [Regla 2 — ej: si una fuente no está disponible, declararlo]
+- [Regla 3 — ej: nunca inventar URLs]
+
+## 5. Accesibilidad de las fuentes
+
+Documentar aquí qué fuentes son accesibles directamente vs cuáles requieren rutas alternativas (RSS, APIs públicas, fuentes secundarias verificables).

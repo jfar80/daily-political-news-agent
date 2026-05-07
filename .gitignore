@@ -1,0 +1,26 @@
+# Configuración privada del agente (cada usuario crea las suyas a partir de los .example)
+claude.md
+memory.md
+
+# Bitácora interna del proyecto
+ai-context.md
+
+# Outputs generados
+informe_*.html
+reports/
+agent/reports/
+
+# Dependencias y build
+node_modules/
+agent/node_modules/
+agent/dist/
+
+# Variables de entorno
+.env
+agent/.env
+.env.local
+agent/.env.local
+
+# OS
+.DS_Store
+*.log
