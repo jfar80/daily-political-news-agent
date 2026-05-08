@@ -82,9 +82,9 @@ ${internationalHeadlines || '(Sin titulares pre-cargados. Usa web_search para to
 
 # Instrucciones
 
-1. **Bloque internacional (5 noticias):** selecciona las 5 más relevantes del material pre-cargado arriba, priorizando los ejes ejecutivo–legislativo, cortes, elecciones y crisis institucionales. Usa las URLs pre-cargadas como enlaces de fuente. Si necesitas contraste o contexto adicional, usa \`web_search\`.
+1. **Bloque internacional (4 noticias):** selecciona las 4 más relevantes del material pre-cargado arriba, priorizando los ejes ejecutivo–legislativo, cortes, elecciones y crisis institucionales. Usa las URLs pre-cargadas como enlaces de fuente. Si necesitas contraste o contexto adicional, usa \`web_search\`.
 
-2. **Bloque Colombia (5 noticias):** usa \`web_search\` en los dominios de El Tiempo, El Espectador, La Silla Vacía, Cambio y Semana (todos accesibles). Aplica los mismos filtros temáticos.
+2. **Bloque Colombia (2 noticias):** usa \`web_search\` en los dominios de El Tiempo, El Espectador, La Silla Vacía, Cambio y Semana (todos accesibles). Aplica los mismos filtros temáticos. Selecciona solo las 2 más relevantes del día.
 
 3. **Formato:** cada noticia ≤ 10 líneas con resumen, tema, sesgo, contraste, por qué importa, riesgos, implicaciones para América Latina/Colombia y enlaces reales.
 
@@ -122,7 +122,7 @@ export async function generateReport(): Promise<GeneratedReport> {
   const useWebSearch = process.env.ENABLE_WEB_SEARCH !== 'false';
   const response = await client.messages.create({
     model: config.anthropic.model,
-    max_tokens: 14000,
+    max_tokens: 18000,
     system: buildSystemPrompt(memoryCriteria),
     ...(useWebSearch
       ? {

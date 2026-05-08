@@ -1,0 +1,3 @@
+{
+  "typescript.tsdk": "agent/node_modules/typescript/lib"
+}
